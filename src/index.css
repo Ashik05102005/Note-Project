@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@layer components{
+    .btn-sidebar {
+        @apply 
+        px-4 py-2 
+        flex items-center  gap-2 
+        rounded-lg 
+        hover:bg-yellow-200 transition 
+        focus:outline-none 
+        focus:ring-2
+        focus:ring-yellow-500
+        focus:border-yellow-500;
+    }
+
+}
+*{
+    /* border:1px solid black; */
+}
