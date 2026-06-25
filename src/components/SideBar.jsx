@@ -7,9 +7,13 @@ import { FaTags } from "react-icons/fa";
 
 
 
-export default function SideBar({setView,view}){
+export default function SideBar({setView,
+                                 view,
+                                 darkMode }){
     return (
-            <div className="min-h-screen bg-amber-50 w-1/4  ">
+            <div className={!darkMode ? "min-h-screen bg-amber-50 w-1/4  "
+                                     : "min-h-screen bg-gray-900 w-1/4  "
+            }>
                 <div className="flex items-center font-bold h-20 border pr-2">
                     <h1 className="w-20"><img src={logo}></img></h1>
                     <h1>Notes</h1>

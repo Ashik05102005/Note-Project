@@ -7,6 +7,7 @@ export default function Form({showForm,
     editingNote,
     error,
     setError,
+    darkMode
 }){
 
     const [input,setInput]=useState({
@@ -54,6 +55,10 @@ export default function Form({showForm,
             event.preventDefault();
             if(!input.title.trim()){
                 validationError.title="title is required"
+            }
+            if(input.title.length>100){
+                validationError.title="character exceeded"
+
             }
             if(!input.content.trim()){
                 validationError.content="content is required"
@@ -113,8 +118,9 @@ export default function Form({showForm,
     <div className="fixed inset-0 bg-black/40 flex justify-center items-center z-50">
       <form
         onSubmit={submitHandler}
-        className="bg-white p-6 rounded-lg shadow-lg w-[500px] flex flex-col gap-4"
-      >
+        className={darkMode ? "bg-gray-900 p-6 rounded-lg shadow-lg w-[500px] flex flex-col gap-4"
+                            :"bg-white p-6 rounded-lg shadow-lg w-[500px] flex flex-col gap-4"
+        }>
         <h2 className="text-2xl font-bold text-center">
           {editingNote ? "Edit Note" : "Add Note"}
         </h2>
@@ -133,7 +139,7 @@ export default function Form({showForm,
         </div>
 
         <div>
-          <label className="block mb-1">Content</label>
+          <label className="block mb-1"  maxlength="500">Content</label>
           <textarea
             name="content"
             value={input.content}
@@ -170,7 +176,7 @@ export default function Form({showForm,
               type="button"
               className="bg-red-200 h-10 w-10 rounded-full hover:border transition"
               onClick={() =>
-                setInput({ ...input, color: "bg-red-200" })
+                setInput({ ...input, color: "bg-red-50" })
             }
             />
 
@@ -178,7 +184,7 @@ export default function Form({showForm,
               type="button"
               className="bg-green-200 h-10 w-10 rounded-full hover:border transition"
               onClick={() =>
-                setInput({ ...input, color: "bg-green-200" })
+                setInput({ ...input, color: "bg-green-50" })
             }
             />
 
@@ -186,7 +192,7 @@ export default function Form({showForm,
               type="button"
               className="bg-yellow-200 h-10 w-10 rounded-full hover:border transition"
               onClick={() =>
-                setInput({ ...input, color: "bg-yellow-200" })
+                setInput({ ...input, color: "bg-yellow-50" })
             }
             />
 
@@ -194,7 +200,7 @@ export default function Form({showForm,
               type="button"
               className="bg-blue-200 h-10 w-10 rounded-full hover:border transition"
               onClick={() =>
-                setInput({ ...input, color: "bg-blue-200" })
+                setInput({ ...input, color: "bg-blue-50" })
             }
             />
           </div>

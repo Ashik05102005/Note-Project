@@ -11,10 +11,20 @@ export default function DataView({
     setNotes,
     setShowForm,
     setEditingNote,
+    search,
+    setSearch
     }) {
       let filteredNotes = notes ;
+
+
       if(view=== "all"){
         filteredNotes = notes.filter((note) => !note.archive);
+      }
+      if (search){
+        filteredNotes=filteredNotes.filter((note)=>note.title.toLowerCase()
+                                                   .includes(search.toLowerCase()) ||
+                                                   note.content.toLowerCase()
+                                                   .includes(search.toLowerCase()));
       }
       if(view=== "pinned"){
         filteredNotes = notes.filter((note) => note.pinned && !note.archive);
