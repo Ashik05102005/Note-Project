@@ -29,7 +29,7 @@ function App() {
     <div className={darkMode 
                   ? "bg-gray-900 text-white min-h-screen"
                   : "bg-white text-black min-h-screen"}>
-      <div className="flex w-full">
+      <div className="flex w-full ">
         <SideBar
           setView={setView}
           view={view}

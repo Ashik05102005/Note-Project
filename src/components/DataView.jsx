@@ -32,6 +32,18 @@ export default function DataView({
       if(view=== "archive"){
         filteredNotes = notes.filter((note) => note.archive);
       }
+      if (filteredNotes.length === 0) {
+        return (
+          <div className="w-full flex flex-col items-center justify-center py-20">
+            <h2 className="text-2xl font-semibold text-gray-600">
+              No Notes Found
+            </h2>
+
+            <p className="text-gray-400 mt-2">
+              Create a new note or change your search/filter.
+            </p>
+          </div>
+        );}
       //delete
       const deleteNote=(id)=>{
         if(confirm("do you want to delete"))
